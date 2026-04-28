@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Januar Digital | AI Futuristic Profile</title>
+    <!-- Google Fonts: Orbitron for tech feel, Poppins for readability -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables untuk Tema Neon & AI */
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-purple: #bc13fe;
+            --neon-cyan: #0ff;
+            --dark-bg: #03030b;
+            --glass-bg: rgba(10, 10, 25, 0.45);
+            --glass-border: rgba(0, 243, 255, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            /* Efek Grid Cybernetic Background */
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(188, 19, 254, 0.1) 0%, transparent 60%),
+                linear-gradient(rgba(0, 243, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.04) 1px, transparent 1px);
+            background-size: 100vw 100vh, 30px 30px, 30px 30px;
+            background-position: center center;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        /* Container Kartu (Glassmorphism & Animasi) */
+        .profile-card {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.1),
+                        inset 0 0 20px rgba(188, 19, 254, 0.05);
+            border: 1px solid var(--glass-border);
+            animation: fadeIn 1.5s ease-out, float 6s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        /* Border Gradient Animasi di belakang kartu */
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple), var(--neon-cyan), var(--neon-purple));
+            z-index: -1;
+            border-radius: 26px;
+            background-size: 400%;
+            animation: gradientBorder 12s linear infinite;
+            opacity: 0.3;
+            filter: blur(10px);
+        }
+
+        /* Foto Profil */
+        .profile-image-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .profile-image-container::before {
+            content: '';
+            position: absolute;
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            z-index: -1;
+            animation: spin 4s linear infinite;
+            box-shadow: 0 0 25px var(--neon-blue);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--dark-bg);
+        }
+
+        /* Teks Profil */
+        .profile-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-cyan);
+            margin-bottom: 5px;
+        }
+
+        .profile-role {
+            font-size: 0.9rem;
+            font-weight: 500;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .profile-desc {
+            font-size: 0.85rem;
+            color: #b3b3b3;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        /* Skills Tags */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .skill-tag {
+            font-size: 0.75rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: rgba(0, 243, 255, 0.05);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            color: var(--neon-cyan);
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px rgba(0, 243, 255, 0.5);
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 243, 255, 0.2);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 15px var(--neon-cyan);
+            transform: translateY(-2px);
+        }
+
+        /* Tombol */
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            color: #fff;
+            border: none;
+            box-shadow: 0 0 15px rgba(188, 19, 254, 0.4);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 25px var(--neon-blue), 0 0 40px var(--neon-purple);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--neon-cyan);
+            border: 2px solid var(--neon-cyan);
+            box-shadow: inset 0 0 10px rgba(0, 243, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 243, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4), inset 0 0 15px rgba(0, 243, 255, 0.3);
+            text-shadow: 0 0 8px var(--neon-cyan);
+            transform: translateY(-3px);
+        }
+
+        /* Efek Kilap / Shine di Tombol Primary */
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: skewX(-20deg);
+            transition: 0.5s;
+        }
+        .btn-primary:hover::after {
+            left: 150%;
+            transition: 0.7s;
+        }
+
+        /* Social Media Icons */
+        .social-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: #8c8c8c;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #fff;
+            border-color: var(--neon-purple);
+            background: rgba(188, 19, 254, 0.2);
+            box-shadow: 0 0 15px var(--neon-purple);
+            transform: translateY(-4px) rotate(360deg);
+        }
+
+        /* Animasi Keyframes */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes gradientBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-card">
+        
+        <!-- Foto Profil -->
+        <div class="profile-image-container">
+            <!-- Menggunakan placeholder foto elegan. Anda dapat mengganti 'src' dengan URL foto Anda -->
+            <img src="image/poi.png" alt="Januar Digital" class="profile-image">
+        </div>
+
+        <!-- Info Profil -->
+        <h1 class="profile-name">Januar Digital</h1>
+        <h2 class="profile-role">Freelancer Digital & Web Dev</h2>
+        <p class="profile-desc">
+            "Membantu bisnis naik level dengan website modern berbasis teknologi digital dan automasi."
+        </p>
+
+        <!-- Keahlian / Skills -->
+        <div class="skills-container">
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">Netlify</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">Google Apps Script</span>
+            <span class="skill-tag">Website Builder</span>
+        </div>
+
+        <!-- Tombol Aksi -->
+        <div class="buttons-container">
+            <!-- Link ke Web -->
+            <a href="https://studiojasadigital.web.id" target="_blank" class="btn btn-primary">
+                <i class="fa-solid fa-globe"></i> Pesan Sekarang
+            </a>
+            <!-- Link ke WhatsApp -->
+            <a href="https://wa.me/6285641612901" target="_blank" class="btn btn-secondary">
+                <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp
+            </a>
+        </div>
+
+        <!-- Media Sosial -->
+        <div class="social-container">
+            <a href="#" class="social-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" class="social-link" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="social-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+        </div>
+
+    </div>
+
+</body>
+</html>
